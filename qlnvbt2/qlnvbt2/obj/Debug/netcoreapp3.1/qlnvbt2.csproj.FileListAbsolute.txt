@@ -1,0 +1,13 @@
+C:\Users\thiet\source\repos\qlnvbt2\qlnvbt2\bin\Debug\netcoreapp3.1\qlnvbt2.exe
+C:\Users\thiet\source\repos\qlnvbt2\qlnvbt2\bin\Debug\netcoreapp3.1\qlnvbt2.deps.json
+C:\Users\thiet\source\repos\qlnvbt2\qlnvbt2\bin\Debug\netcoreapp3.1\qlnvbt2.runtimeconfig.json
+C:\Users\thiet\source\repos\qlnvbt2\qlnvbt2\bin\Debug\netcoreapp3.1\qlnvbt2.runtimeconfig.dev.json
+C:\Users\thiet\source\repos\qlnvbt2\qlnvbt2\bin\Debug\netcoreapp3.1\qlnvbt2.dll
+C:\Users\thiet\source\repos\qlnvbt2\qlnvbt2\bin\Debug\netcoreapp3.1\qlnvbt2.pdb
+C:\Users\thiet\source\repos\qlnvbt2\qlnvbt2\obj\Debug\netcoreapp3.1\qlnvbt2.csproj.AssemblyReference.cache
+C:\Users\thiet\source\repos\qlnvbt2\qlnvbt2\obj\Debug\netcoreapp3.1\qlnvbt2.AssemblyInfoInputs.cache
+C:\Users\thiet\source\repos\qlnvbt2\qlnvbt2\obj\Debug\netcoreapp3.1\qlnvbt2.AssemblyInfo.cs
+C:\Users\thiet\source\repos\qlnvbt2\qlnvbt2\obj\Debug\netcoreapp3.1\qlnvbt2.csproj.CoreCompileInputs.cache
+C:\Users\thiet\source\repos\qlnvbt2\qlnvbt2\obj\Debug\netcoreapp3.1\qlnvbt2.dll
+C:\Users\thiet\source\repos\qlnvbt2\qlnvbt2\obj\Debug\netcoreapp3.1\qlnvbt2.pdb
+C:\Users\thiet\source\repos\qlnvbt2\qlnvbt2\obj\Debug\netcoreapp3.1\qlnvbt2.genruntimeconfig.cache
