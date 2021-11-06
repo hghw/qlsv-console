@@ -74,15 +74,6 @@ namespace qlnvbt2
         }
         public static void suaNV(List<NhanVien> listNhanVien)
         {
-            Console.WriteLine("Nhap ma nhan vien");
-            string maNhanVien = Console.ReadLine();
-            for (int i = 0; i < listNhanVien.Count; i++)
-            {
-                if (listNhanVien[i].maNhanVien == maNhanVien)
-                {
-                    hienthiNV(listNhanVien);
-                }
-            }
             //nhap ma nhan vien can sua
             Console.WriteLine("Nhap ma nhan vien muon sua");
             string maNhanVienSua = Console.ReadLine();
@@ -91,50 +82,149 @@ namespace qlnvbt2
             {
                 if (listNhanVien[i].maNhanVien == maNhanVienSua)
                 {
-                    //sua thong tin
-                    Console.WriteLine("Nhap ho ten: ");
-                    string hoTen = Console.ReadLine();
-                    Console.WriteLine("Nhap ngay sinh: ");
-                    string ngaySinh = (Console.ReadLine());
-                    Console.WriteLine("Nhap sdt: ");
-                    string sdt = Console.ReadLine();
-                    Console.WriteLine("Nhap dia chi: ");
-                    string diaChi = Console.ReadLine();
-                    Console.WriteLine("Nhap so nam cong tac: ");
-                    int soNamCongTac = int.Parse(Console.ReadLine());
+                    Console.Write("MSV: " + listNhanVien[i].maNhanVien);
+                    Console.Write(" hoTen: " + listNhanVien[i].hoTen);
+                    Console.Write(" date: " + listNhanVien[i].ngaySinh);
+                    Console.Write(" sdt: " + listNhanVien[i].sdt);
+                    Console.Write(" diaChi: " + listNhanVien[i].diaChi);
+                    Console.Write(" soNamCongTac: " + listNhanVien[i].soNamCongTac);
+                    Console.WriteLine();
+                    //chon thong tin can sua
+                    int chonSua;
+                    Console.WriteLine("Chon thong tin can sua");
+                    Console.WriteLine("1. Chinh sua ho ten");
+                    Console.WriteLine("2. Chinh sua ngay sinh");
+                    Console.WriteLine("3. Chinh sua sdt");
+                    Console.WriteLine("4. Chinh sua dia chi");
+                    Console.WriteLine("5. Chinh sua so nam cong tac");
+                    Console.WriteLine("6. Thoat");
 
-                    // nhan ENTER de in ra kq
-
-                    Console.WriteLine("Nhan ENTER de in ra kq");
-                    var key = Console.ReadKey();
-                    if (key.Key == ConsoleKey.Enter)
+                    chonSua = int.Parse(Console.ReadLine());
+                    switch (chonSua)
                     {
-                        hienthiNV(listNhanVien);
-                        Console.WriteLine("Ban co muon luu hay khong?");
-                        Console.WriteLine("Nhap \'YES\' de luu,  \'NO\' de thoat ");
-                        string chon = (Console.ReadLine());
+                        case 1:
+                            Console.WriteLine("Nhap ho ten: ");
+                            string hoTen = Console.ReadLine();
+                            Console.WriteLine("Nhan ENTER de in ra kq");
+                            var key = Console.ReadKey();
+                            if (key.Key == ConsoleKey.Enter)
+                            {
+                                hienthiNV(listNhanVien);
+                                Console.WriteLine("Ban co muon luu hay khong?");
+                                Console.WriteLine("Nhap \'YES\' de luu,  \'NO\' de thoat ");
+                                string chon = (Console.ReadLine());
 
-                        if (chon == "yes")
-                        {
-                            listNhanVien[i].hoTen = hoTen;
-                            listNhanVien[i].ngaySinh = ngaySinh;
-                            listNhanVien[i].sdt = diaChi;
-                            listNhanVien[i].diaChi = diaChi;
-                            listNhanVien[i].soNamCongTac = soNamCongTac;
-                        }
-                        else
-                        {
-                            menu(listNhanVien);
-                        }
+                                if (chon == "yes")
+                                {
+                                    listNhanVien[i].hoTen = hoTen;
+                                }
+                                else
+                                {
+                                    menu(listNhanVien);
+                                }
+                            }
+                            break;
+                        case 2:
+                            Console.WriteLine("Nhap ngay sinh: ");
+                            string ngaySinh = (Console.ReadLine());
+                            Console.WriteLine("Nhan ENTER de in ra kq");
+                            key = Console.ReadKey();
+                            if (key.Key == ConsoleKey.Enter)
+                            {
+                                hienthiNV(listNhanVien);
+                                Console.WriteLine("Ban co muon luu hay khong?");
+                                Console.WriteLine("Nhap \'YES\' de luu,  \'NO\' de thoat ");
+                                string chon = (Console.ReadLine());
+
+                                if (chon == "yes")
+                                {
+                                    listNhanVien[i].ngaySinh = ngaySinh;
+                                }
+                                else
+                                {
+                                    menu(listNhanVien);
+                                }
+                            }
+                            break;
+                        case 3:
+                            Console.WriteLine("Nhap sdt: ");
+                            string sdt = Console.ReadLine();
+                            Console.WriteLine("Nhan ENTER de in ra kq");
+                            key = Console.ReadKey();
+                            if (key.Key == ConsoleKey.Enter)
+                            {
+                                hienthiNV(listNhanVien);
+                                Console.WriteLine("Ban co muon luu hay khong?");
+                                Console.WriteLine("Nhap \'YES\' de luu,  \'NO\' de thoat ");
+                                string chon = (Console.ReadLine());
+
+                                if (chon == "yes")
+                                {
+                                    listNhanVien[i].sdt = sdt;
+                                }
+                                else
+                                {
+                                    menu(listNhanVien);
+                                }
+                            }
+                            break;
+                        case 4:
+                            Console.WriteLine("Nhap dia chi: ");
+                            string diaChi = Console.ReadLine();
+                            Console.WriteLine("Nhan ENTER de in ra kq");
+                            key = Console.ReadKey();
+                            if (key.Key == ConsoleKey.Enter)
+                            {
+                                hienthiNV(listNhanVien);
+                                Console.WriteLine("Ban co muon luu hay khong?");
+                                Console.WriteLine("Nhap \'YES\' de luu,  \'NO\' de thoat ");
+                                string chon = (Console.ReadLine());
+
+                                if (chon == "yes")
+                                {
+                                    listNhanVien[i].diaChi = diaChi;
+                                }
+                                else
+                                {
+                                    menu(listNhanVien);
+                                }
+                            }
+                            break;
+                        case 5:
+                            Console.WriteLine("Nhap so nam cong tac: ");
+                            int soNamCongTac = int.Parse(Console.ReadLine());
+                            Console.WriteLine("Nhan ENTER de in ra kq");
+                            key = Console.ReadKey();
+                            if (key.Key == ConsoleKey.Enter)
+                            {
+                                hienthiNV(listNhanVien);
+                                Console.WriteLine("Ban co muon luu hay khong?");
+                                Console.WriteLine("Nhap \'YES\' de luu,  \'NO\' de thoat ");
+                                string chon = (Console.ReadLine());
+
+                                if (chon == "yes")
+                                {
+                                    listNhanVien[i].soNamCongTac = soNamCongTac;
+                                }
+                                else
+                                {
+                                    menu(listNhanVien);
+                                }
+                            }
+                            break;
+                        case 6:
+                            break;
+                        default:
+                            Console.WriteLine("Nhap sai");
+                            break;
+                            // nhan ENTER de in ra kq
                     }
-                    break;
                 }
             }
 
         }
         public static void xoaNV(List<NhanVien> listNhanVien)
         {
-            Console.WriteLine("Ban da chon xoa nhan vien");
             Console.WriteLine("Nhap ma nhan vien muon xoa: ");
             string maNhanVien = Console.ReadLine();
             for (int i = 0; i < listNhanVien.Count; i++)
@@ -171,7 +261,7 @@ namespace qlnvbt2
             string timKiemKey = Console.ReadLine();
 
             string pos = SequencePosition(listNhanVien, timKiemKey);
-            Console.WriteLine("Giá trị được tìm thấy tại vị trí:{0}", pos);
+            Console.WriteLine("Gia tri duoc tim thay tai vi tri:{0}", pos);
 
         }
 
@@ -185,11 +275,12 @@ namespace qlnvbt2
                 {
                     pos = i;
                     found = 1;
+                    Console.Write(" hoTen: " + listNhanVien[i].hoTen);
+                    Console.Write(" diaChi: " + listNhanVien[i].diaChi);
                 }
             string pos2 = Convert.ToString(pos);
             return pos2;
         }
-
         public static void menu(List<NhanVien> listNhanVien)
         {
 
