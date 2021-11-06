@@ -9,41 +9,7 @@ namespace qlnvbt2
         static void Main(string[] args)
         {
             List<NhanVien> listNhanVien = new List<NhanVien>();
-
-            int check;
-            do
-            {
-                Console.WriteLine("1. Hien thi DS nguoi dung");
-                Console.WriteLine("2. Them moi nhan vien");
-                Console.WriteLine("3. Sua nhan vien");
-                Console.WriteLine("4. Xoa nhan vien");
-                Console.WriteLine("5. Thoat!");
-                check = int.Parse(Console.ReadLine());
-                switch (check)
-                {
-                    case 1:
-                        hienthiNV(listNhanVien);
-                        break;
-                    case 2:
-                        themNV(listNhanVien);
-                        break;
-                    case 3:
-                        suaNV(listNhanVien);
-                        break;
-                    case 4:
-                        xoaNV(listNhanVien);
-                        break;
-                    case 5:
-                        break;
-                    default:
-                        Console.WriteLine("Nhap sai vui long nhap lai");
-                        break;
-                }
-            } while (check != 5);
-
-            {
-
-            }
+            menu(listNhanVien);
         }
         public static void hienthiNV(List<NhanVien> listNhanVien)
         {
@@ -113,17 +79,9 @@ namespace qlnvbt2
             {
                 if (listNhanVien[i].maNhanVien == maNhanVien)
                 {
-                    foreach (NhanVien item in listNhanVien)
-                    {
-                        Console.Write("MSV: " + item.maNhanVien);
-                        Console.Write(" hoTen: " + item.hoTen);
-                        Console.Write(" date: " + item.ngaySinh);
-                        Console.Write(" sdt: " + item.sdt);
-                        Console.Write(" diaChi: " + item.diaChi);
-                        Console.Write(" soNamCongTac: " + item.soNamCongTac);
-                        Console.WriteLine();
-                    }
+                    hienthiNV(listNhanVien);
                 }
+                break;
             }
             //nhap ma nhan vien can sua
             Console.WriteLine("Nhap ma nhan vien muon sua");
@@ -134,34 +92,44 @@ namespace qlnvbt2
                 {
                     //sua thong tin
                     Console.WriteLine("Nhap ho ten: ");
-                    listNhanVien[i].hoTen = Console.ReadLine();
+                    string hoTen = Console.ReadLine();
                     Console.WriteLine("Nhap ngay sinh: ");
-                    listNhanVien[i].ngaySinh = (Console.ReadLine());
+                    string ngaySinh = (Console.ReadLine());
                     Console.WriteLine("Nhap sdt: ");
-                    listNhanVien[i].sdt = Console.ReadLine();
+                    string sdt = Console.ReadLine();
                     Console.WriteLine("Nhap dia chi: ");
-                    listNhanVien[i].diaChi = Console.ReadLine();
+                    string diaChi = Console.ReadLine();
                     Console.WriteLine("Nhap so nam cong tac: ");
-                    listNhanVien[i].soNamCongTac = int.Parse(Console.ReadLine());
-                }
-            }
-            // nhan ENTER de in ra kq
+                    int soNamCongTac = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Nhan ENTER de in ra kq");
-            var key = Console.ReadKey();
-            if (key.Key == ConsoleKey.Enter)
-            {
-                foreach (NhanVien item in listNhanVien)
-                {
-                    Console.Write("MSV: " + item.maNhanVien);
-                    Console.Write(" hoTen: " + item.hoTen);
-                    Console.Write(" date: " + item.ngaySinh);
-                    Console.Write(" sdt: " + item.sdt);
-                    Console.Write(" diaChi: " + item.diaChi);
-                    Console.Write(" soNamCongTac: " + item.soNamCongTac);
-                    Console.WriteLine();
+                    // nhan ENTER de in ra kq
+
+                    Console.WriteLine("Nhan ENTER de in ra kq");
+                    var key = Console.ReadKey();
+                    if (key.Key == ConsoleKey.Enter)
+                    {
+                        hienthiNV(listNhanVien);
+                        Console.WriteLine("Ban co muon luu hay khong?");
+                        Console.WriteLine("Co ghi YES, Khong ghi NO ");
+                        string chon = (Console.ReadLine());
+
+                        if (chon == "yes")
+                        {
+                            listNhanVien[i].hoTen = hoTen;
+                            listNhanVien[i].ngaySinh = ngaySinh;
+                            listNhanVien[i].sdt = diaChi;
+                            listNhanVien[i].diaChi = diaChi;
+                            listNhanVien[i].soNamCongTac = soNamCongTac;
+                        }
+                        else
+                        {
+                            menu(listNhanVien);
+                        }
+                    }
+                    break;
                 }
             }
+
         }
         public static void xoaNV(List<NhanVien> listNhanVien)
         {
@@ -178,6 +146,44 @@ namespace qlnvbt2
                 {
                     Console.WriteLine("Khong ton tai ma nhan vien nay");
                 }
+            }
+        }
+        public static void menu(List<NhanVien> listNhanVien)
+        {
+
+            int check;
+            do
+            {
+                Console.WriteLine("1. Hien thi DS nguoi dung");
+                Console.WriteLine("2. Them moi nhan vien");
+                Console.WriteLine("3. Sua nhan vien");
+                Console.WriteLine("4. Xoa nhan vien");
+                Console.WriteLine("5. Thoat!");
+                check = int.Parse(Console.ReadLine());
+                switch (check)
+                {
+                    case 1:
+                        hienthiNV(listNhanVien);
+                        break;
+                    case 2:
+                        themNV(listNhanVien);
+                        break;
+                    case 3:
+                        suaNV(listNhanVien);
+                        break;
+                    case 4:
+                        xoaNV(listNhanVien);
+                        break;
+                    case 5:
+                        break;
+                    default:
+                        Console.WriteLine("Nhap sai vui long nhap lai");
+                        break;
+                }
+            } while (check != 5);
+
+            {
+
             }
         }
     }
