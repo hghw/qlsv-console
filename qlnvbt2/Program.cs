@@ -1,6 +1,7 @@
 ﻿using qlnvbt2.Models;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace qlnvbt2
 {
@@ -81,11 +82,11 @@ namespace qlnvbt2
                 {
                     hienthiNV(listNhanVien);
                 }
-                break;
             }
             //nhap ma nhan vien can sua
             Console.WriteLine("Nhap ma nhan vien muon sua");
             string maNhanVienSua = Console.ReadLine();
+            //khong co i++
             for (int i = 0; i < listNhanVien.Count; i++)
             {
                 if (listNhanVien[i].maNhanVien == maNhanVienSua)
@@ -110,7 +111,7 @@ namespace qlnvbt2
                     {
                         hienthiNV(listNhanVien);
                         Console.WriteLine("Ban co muon luu hay khong?");
-                        Console.WriteLine("Co ghi YES, Khong ghi NO ");
+                        Console.WriteLine("Nhap \'YES\' de luu,  \'NO\' de thoat ");
                         string chon = (Console.ReadLine());
 
                         if (chon == "yes")
@@ -140,14 +141,55 @@ namespace qlnvbt2
             {
                 if (listNhanVien[i].maNhanVien == maNhanVien)
                 {
-                    listNhanVien.RemoveAt(i);
+                    Console.WriteLine("Ban chac chan muon xoa");
+                    Console.WriteLine("Nhap \'yes\' de xoa, \'no\' de thoat ");
+                    string xoaNhanVien = Console.ReadLine();
+                    if (xoaNhanVien == "yes")
+                    {
+                        listNhanVien.RemoveAt(i);
+                    }
+                    else if (xoaNhanVien == "no")
+                    {
+                        menu(listNhanVien);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ban da nhap sai");
+                    }
+
                 }
                 else
                 {
-                    Console.WriteLine("Khong ton tai ma nhan vien nay");
+                    Console.WriteLine("Khong ton tai nhan vien nay");
                 }
             }
         }
+        public static void timKiem(List<NhanVien> listNhanVien)
+        {
+
+            Console.WriteLine("Nhap tu khoa muon tim kiem");
+            string timKiemKey = Console.ReadLine();
+
+            string pos = SequencePosition(listNhanVien, timKiemKey);
+            Console.WriteLine("Giá trị được tìm thấy tại vị trí:{0}", pos);
+
+        }
+
+        private static string SequencePosition(List<NhanVien> listNhanVien, string timKiemKey)
+        {
+            int found = 0;
+            int i;
+            int pos = -1;
+            for (i = 0; i < listNhanVien.Count && found != 1; i++)
+                if (listNhanVien[i].maNhanVien == timKiemKey)
+                {
+                    pos = i;
+                    found = 1;
+                }
+            string pos2 = Convert.ToString(pos);
+            return pos2;
+        }
+
         public static void menu(List<NhanVien> listNhanVien)
         {
 
@@ -158,7 +200,8 @@ namespace qlnvbt2
                 Console.WriteLine("2. Them moi nhan vien");
                 Console.WriteLine("3. Sua nhan vien");
                 Console.WriteLine("4. Xoa nhan vien");
-                Console.WriteLine("5. Thoat!");
+                Console.WriteLine("5. Tim kiem nhan vien");
+                Console.WriteLine("6. Thoat!");
                 check = int.Parse(Console.ReadLine());
                 switch (check)
                 {
@@ -175,16 +218,15 @@ namespace qlnvbt2
                         xoaNV(listNhanVien);
                         break;
                     case 5:
+                        timKiem(listNhanVien);
+                        break;
+                    case 6:
                         break;
                     default:
                         Console.WriteLine("Nhap sai vui long nhap lai");
                         break;
                 }
-            } while (check != 5);
-
-            {
-
-            }
+            } while (check != 6);
         }
     }
 }

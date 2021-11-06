@@ -16,10 +16,10 @@ namespace qlnvbt2.Models
 
         public string getMaNhanVien(List<NhanVien> listNhanVien)
         {
-            float maCount = ((float)(((listNhanVien.Capacity) + 1) / 1000));
+            float maCount = (float)(listNhanVien.Count + 1) / 1000;
             string maNhanVien = Convert.ToString(maCount);
-            // maNhanVien = maNhanVien.Replace(".", "");
-            // maNhanVien = "NV-" + maNhanVien;
+            maNhanVien = maNhanVien.Replace(",", "");
+            maNhanVien = "NV-" + maNhanVien;
             Console.WriteLine(maNhanVien);
             return maNhanVien;
         }
