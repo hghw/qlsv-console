@@ -1,7 +1,9 @@
 ﻿using qlnvbt2.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
+// using Newtonsoft.Json;
 
 namespace qlnvbt2
 {
@@ -34,17 +36,36 @@ namespace qlnvbt2
             nv.maNhanVien = nv.getMaNhanVien(listNhanVien);
             // Console.WriteLine("Nhap mnv: ");
             // nv.maNhanVien = Console.ReadLine();
-            do
+
+            for (; ; )
             {
                 Console.WriteLine("Nhap ho ten: ");
                 nv.hoTen = Console.ReadLine();
-            } while (nv.hoTen == "");
-
-            do
+                if (nv.hoTen == "")
+                {
+                    Console.WriteLine("Bat buoc nhap ho ten");
+                }
+                else
+                {
+                    break;
+                }
+            }
+            for (; ; )
             {
                 Console.WriteLine("Nhap ngay sinh: ");
-                nv.ngaySinh = (Console.ReadLine());
-            } while (nv.ngaySinh == "");
+                string ngaySinhString = Console.ReadLine();
+                nv.ngaySinh = DateTime.Parse(ngaySinhString);
+                if (ngaySinhString == "")
+                {
+                    Console.WriteLine("Bat buoc nhap ngay sinh");
+                }
+                else
+                {
+                    break;
+                }
+
+
+            }
 
             Console.WriteLine("Nhap sdt: ");
             nv.sdt = Console.ReadLine();
@@ -52,12 +73,30 @@ namespace qlnvbt2
             nv.diaChi = Console.ReadLine();
             Console.WriteLine("Nhap chuc vu: ");
             nv.chucVu = Console.ReadLine();
-            do
+            for (; ; )
             {
-                Console.WriteLine("Nhap so nam cong tac: ");
-                nv.soNamCongTac = int.Parse(Console.ReadLine());
-            } while (nv.soNamCongTac < 0);
+                try
+                {
+                    Console.WriteLine("Nhap so nam cong tac: ");
+                    string cvsoNamCongTac = Console.ReadLine();
+                    nv.soNamCongTac = int.Parse(cvsoNamCongTac);
+                    if (cvsoNamCongTac == "")
+                    {
+                        Console.WriteLine("Bat buoc nhap so nam cong tac");
+                    }
+                    else
+                    {
+                        break;
+                    }
 
+                }
+                catch (System.FormatException)
+                {
+                    Console.WriteLine("Ban da nhap sai");
+                    throw;
+                }
+
+            }
 
             // kiem tra ho ten va ngay sinh trung nhau
 
@@ -126,11 +165,12 @@ namespace qlnvbt2
                             break;
                         case 2:
                             Console.WriteLine("Nhap ngay sinh: ");
-                            string ngaySinh = (Console.ReadLine());
+                            DateTime ngaySinh = DateTime.Parse(Console.ReadLine());
                             Console.WriteLine("Nhan ENTER de in ra kq");
                             key = Console.ReadKey();
                             if (key.Key == ConsoleKey.Enter)
                             {
+
                                 hienthiNV(listNhanVien);
                                 Console.WriteLine("Ban co muon luu hay khong?");
                                 Console.WriteLine("Nhap \'YES\' de luu,  \'NO\' de thoat ");
@@ -260,26 +300,90 @@ namespace qlnvbt2
             Console.WriteLine("Nhap tu khoa muon tim kiem");
             string timKiemKey = Console.ReadLine();
 
-            string pos = SequencePosition(listNhanVien, timKiemKey);
-            Console.WriteLine("Gia tri duoc tim thay tai vi tri:{0}", pos);
+            // string pos = SequencePosition(listNhanVien, timKiemKey);
+            // Console.WriteLine("Gia tri duoc tim thay tai vi tri:{0}", pos);
+            foreach (var item in listNhanVien)
+            {
+                if (item.maNhanVien.Contains(timKiemKey) || item.hoTen.Contains(timKiemKey) || item.ngaySinh.Equals(timKiemKey) || item.sdt.Contains(timKiemKey) || item.diaChi.Contains(timKiemKey) || item.soNamCongTac.Equals(timKiemKey))
+                {
+                    Console.WriteLine($"{item.hoTen} - {item.diaChi}");
+                }
+            }
+
+            // var timThay = listNhanVien.FindAll(
+            //     (p) =>
+            //     {
+            //         return p.maNhanVien.Contains(timKiemKey);
+            //     });
+
+            // foreach (var p in timThay)
+            // {
+            //     Console.WriteLine($"{p.hoTen} - {p.diaChi}");
+            // }
 
         }
 
-        private static string SequencePosition(List<NhanVien> listNhanVien, string timKiemKey)
+        // private static string SequencePosition(List<NhanVien> listNhanVien, string timKiemKey)
+        // {
+        //     int found = 0;
+        //     int i;
+        //     int pos = -1;
+        //     for (i = 0; i < listNhanVien.Count && found != 1; i++)
+        //         if (listNhanVien[i].maNhanVien == timKiemKey)
+        //         {
+        //             pos = i;
+        //             found = 1;
+        //             Console.Write(" hoTen: " + listNhanVien[i].hoTen);
+        //             Console.Write(" diaChi: " + listNhanVien[i].diaChi);
+        //         }
+        //     string pos2 = Convert.ToString(pos);
+        //     return pos2;
+        // }
+        public static void luuFile(List<NhanVien> listNhanVien)
         {
-            int found = 0;
-            int i;
-            int pos = -1;
-            for (i = 0; i < listNhanVien.Count && found != 1; i++)
-                if (listNhanVien[i].maNhanVien == timKiemKey)
-                {
-                    pos = i;
-                    found = 1;
-                    Console.Write(" hoTen: " + listNhanVien[i].hoTen);
-                    Console.Write(" diaChi: " + listNhanVien[i].diaChi);
-                }
-            string pos2 = Convert.ToString(pos);
-            return pos2;
+            foreach (var item in listNhanVien)
+            {
+                var infoConvert = ($"{item.maNhanVien}, {item.hoTen}, {item.ngaySinh}, {item.diaChi}, {item.soNamCongTac} ");
+
+                // Console.WriteLine(infoConvert);
+                // var convertInfo = JsonConvert.SerializeObject(info);
+                // Console.WriteLine(convertInfo);
+                // File.Delete("NhanVien.txt");
+                File.AppendAllText("NhanVien.txt", infoConvert);
+
+            }
+
+
+
+
+        }
+        public static void loadFile(List<NhanVien> listNhanVien)
+        {
+
+            var kiemtra = File.ReadAllText("NhanVien.txt");
+            if (kiemtra != "")
+            {
+                Console.WriteLine("File dang co du lieu");
+                Console.WriteLine(kiemtra);
+                // listNhanVien.Add(kiemtra);
+                // var convertInfo = JsonConvert.DeserializeObject(info);
+
+                // JsonConvert.DeserializeObject<Movie>(File.ReadAllText(@"c:\movie.json"));
+                // using (StreamReader file = File.OpenText(@"c:\movie.json"))
+                // {
+                //     JsonSerializer serializer = new JsonSerializer();
+                //     Movie movie2 = (Movie)serializer.Deserialize(file, typeof(Movie));
+                // }
+
+                // https://phantienquang.blogspot.com/2014/07/parse-file-json-bang-c.html
+                // https://hoctoantap.com/2016/09/09/thu-vien-xu-ly-du-lieu-dang-json-trong-c-newtonsoft-json.html
+            }
+            else
+            {
+                Console.WriteLine("File khong co du lieu");
+            }
+
+
         }
         public static void menu(List<NhanVien> listNhanVien)
         {
@@ -292,7 +396,9 @@ namespace qlnvbt2
                 Console.WriteLine("3. Sua nhan vien");
                 Console.WriteLine("4. Xoa nhan vien");
                 Console.WriteLine("5. Tim kiem nhan vien");
-                Console.WriteLine("6. Thoat!");
+                Console.WriteLine("6. Luu ra file JSON");
+                Console.WriteLine("7. Load file!");
+                Console.WriteLine("8. Thoat!");
                 check = int.Parse(Console.ReadLine());
                 switch (check)
                 {
@@ -312,12 +418,18 @@ namespace qlnvbt2
                         timKiem(listNhanVien);
                         break;
                     case 6:
+                        luuFile(listNhanVien);
+                        break;
+                    case 7:
+                        loadFile(listNhanVien);
+                        break;
+                    case 8:
                         break;
                     default:
                         Console.WriteLine("Nhap sai vui long nhap lai");
                         break;
                 }
-            } while (check != 6);
+            } while (check != 8);
         }
     }
 }

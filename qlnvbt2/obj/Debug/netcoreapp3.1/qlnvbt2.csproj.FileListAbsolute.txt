@@ -25,3 +25,4 @@ C:\Users\Admin\Documents\GitHub\qlsv2\qlnvbt2\obj\Debug\netcoreapp3.1\qlnvbt2.dl
 C:\Users\Admin\Documents\GitHub\qlsv2\qlnvbt2\obj\Debug\netcoreapp3.1\qlnvbt2.pdb
 C:\Users\Admin\Documents\GitHub\qlsv2\qlnvbt2\obj\Debug\netcoreapp3.1\qlnvbt2.genruntimeconfig.cache
 C:\Users\Admin\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\qlnvbt2.pdb
+C:\Users\Admin\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll

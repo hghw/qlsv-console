@@ -8,7 +8,7 @@ namespace qlnvbt2.Models
     {
         public string maNhanVien { get; set; }
         public string hoTen { get; set; }
-        public string ngaySinh { get; set; }
+        public DateTime ngaySinh { get; set; }
         public string sdt { get; set; }
         public string diaChi { get; set; }
         public string chucVu { get; set; }
