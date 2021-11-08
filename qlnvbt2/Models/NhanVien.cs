@@ -18,7 +18,7 @@ namespace qlnvbt2.Models
         {
             float maCount = (float)(listNhanVien.Count + 1) / 1000;
             string maNhanVien = Convert.ToString(maCount);
-            maNhanVien = maNhanVien.Replace(",", "");
+            maNhanVien = maNhanVien.Replace(".", "");
             maNhanVien = "NV-" + maNhanVien;
             Console.WriteLine(maNhanVien);
             return maNhanVien;
