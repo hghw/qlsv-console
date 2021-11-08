@@ -12,58 +12,11 @@ namespace qlnvbt2
         static void Main(string[] args)
         {
             List<NhanVien> listNhanVien = new List<NhanVien>();
-
-            var kiemtra = File.ReadAllText("NhanVien.js");
-            if (kiemtra != "")
-            {
-                Console.WriteLine("File dang co du lieu");
-               /* Console.WriteLine(kiemtra);*/
-                // chuyen doi js sang obj
-                JavaScriptSerializer jss = new JavaScriptSerializer();
-                var obj = jss.Deserialize<dynamic>(kiemtra);
-
-                NhanVien nv = new NhanVien();
-
-                string maNhanVienOBJ = obj["maNhanVien"];
-                string hoTenOBJ = obj["hoTen"];
-                DateTime ngaySinhOBJ = Convert.ToDateTime(obj["ngaySinh"]);
-                string sdtOBJ = obj["sdt"];
-                string diaChiOBJ = obj["diaChi"];
-                int soNamCongTacOBJ = Convert.ToInt32(obj["soNamCongTac"]);
-
-                nv.maNhanVien = maNhanVienOBJ;
-                nv.hoTen = hoTenOBJ;
-                nv.ngaySinh = ngaySinhOBJ;
-                nv.sdt = sdtOBJ;
-                nv.diaChi = diaChiOBJ;
-                nv.soNamCongTac = soNamCongTacOBJ;
-
-                listNhanVien.Add(nv);
-
-                /*var convertInfo = JsonConvert.DeserializeObject(kiemtra);*/
-                /*Console.WriteLine(convertInfo);*/
-
-                /*listNhanVien.Add(convertInfo);*/
-
-                // JsonConvert.DeserializeObject<Movie>(File.ReadAllText(@"c:\movie.json"));
-                // using (StreamReader file = File.OpenText(@"c:\movie.json"))
-                // {
-                //     JsonSerializer serializer = new JsonSerializer();
-                //     Movie movie2 = (Movie)serializer.Deserialize(file, typeof(Movie));
-                // }
-
-            }
-            else
-            {
-                Console.WriteLine("File khong co du lieu");
-            }
-
-            
+            loadFile(listNhanVien);
             menu(listNhanVien);
         }
         public static void hienthiNV(List<NhanVien> listNhanVien)
         {   
-            Console.WriteLine("Hien thi nhan vien");
             foreach (NhanVien item in listNhanVien)
             {
                 Console.Write("MSV: " + item.maNhanVien);
@@ -195,7 +148,15 @@ namespace qlnvbt2
                             var key = Console.ReadKey();
                             if (key.Key == ConsoleKey.Enter)
                             {
-                                hienthiNV(listNhanVien);
+                                //hien thi ra nhan vien sua
+                                Console.Write("MSV: " + listNhanVien[i].maNhanVien);
+                                Console.Write(" hoTen: " + hoTen);
+                                Console.Write(" date: " + listNhanVien[i].ngaySinh);
+                                Console.Write(" sdt: " + listNhanVien[i].sdt);
+                                Console.Write(" diaChi: " + listNhanVien[i].diaChi);
+                                Console.Write(" soNamCongTac: " + listNhanVien[i].soNamCongTac);
+                                Console.WriteLine();
+
                                 Console.WriteLine("Ban co muon luu hay khong?");
                                 Console.WriteLine("Nhap \'yes\' de luu,  \'no\' de thoat ");
                                 string chon = (Console.ReadLine());
@@ -218,9 +179,17 @@ namespace qlnvbt2
                             if (key.Key == ConsoleKey.Enter)
                             {
 
-                                hienthiNV(listNhanVien);
+                                //hien thi ra nhan vien sua
+                                Console.Write("MSV: " + listNhanVien[i].maNhanVien);
+                                Console.Write(" hoTen: " + listNhanVien[i].hoTen);
+                                Console.Write(" date: " + ngaySinh);
+                                Console.Write(" sdt: " + listNhanVien[i].sdt);
+                                Console.Write(" diaChi: " + listNhanVien[i].diaChi);
+                                Console.Write(" soNamCongTac: " + listNhanVien[i].soNamCongTac);
+                                Console.WriteLine();
+
                                 Console.WriteLine("Ban co muon luu hay khong?");
-                                Console.WriteLine("Nhap \'YES\' de luu,  \'NO\' de thoat ");
+                                Console.WriteLine("Nhap \'yes\' de luu,  \'no\' de thoat ");
                                 string chon = (Console.ReadLine());
 
                                 if (chon == "yes")
@@ -240,9 +209,17 @@ namespace qlnvbt2
                             key = Console.ReadKey();
                             if (key.Key == ConsoleKey.Enter)
                             {
-                                hienthiNV(listNhanVien);
+                                //hien thi ra nhan vien sua
+                                Console.Write("MSV: " + listNhanVien[i].maNhanVien);
+                                Console.Write(" hoTen: " + listNhanVien[i].hoTen);
+                                Console.Write(" date: " + listNhanVien[i].ngaySinh);
+                                Console.Write(" sdt: " + sdt);
+                                Console.Write(" diaChi: " + listNhanVien[i].diaChi);
+                                Console.Write(" soNamCongTac: " + listNhanVien[i].soNamCongTac);
+                                Console.WriteLine();
+
                                 Console.WriteLine("Ban co muon luu hay khong?");
-                                Console.WriteLine("Nhap \'YES\' de luu,  \'NO\' de thoat ");
+                                Console.WriteLine("Nhap \'yes\' de luu,  \'no\' de thoat ");
                                 string chon = (Console.ReadLine());
 
                                 if (chon == "yes")
@@ -262,9 +239,17 @@ namespace qlnvbt2
                             key = Console.ReadKey();
                             if (key.Key == ConsoleKey.Enter)
                             {
-                                hienthiNV(listNhanVien);
+                                //hien thi ra nhan vien sua
+                                Console.Write("MSV: " + listNhanVien[i].maNhanVien);
+                                Console.Write(" hoTen: " + listNhanVien[i].hoTen);
+                                Console.Write(" date: " + listNhanVien[i].ngaySinh);
+                                Console.Write(" sdt: " + listNhanVien[i].sdt);
+                                Console.Write(" diaChi: " + diaChi);
+                                Console.Write(" soNamCongTac: " + listNhanVien[i].soNamCongTac);
+                                Console.WriteLine();
+
                                 Console.WriteLine("Ban co muon luu hay khong?");
-                                Console.WriteLine("Nhap \'YES\' de luu,  \'NO\' de thoat ");
+                                Console.WriteLine("Nhap \'yes\' de luu,  \'no\' de thoat ");
                                 string chon = (Console.ReadLine());
 
                                 if (chon == "yes")
@@ -284,9 +269,17 @@ namespace qlnvbt2
                             key = Console.ReadKey();
                             if (key.Key == ConsoleKey.Enter)
                             {
-                                hienthiNV(listNhanVien);
+                                //hien thi ra nhan vien sua
+                                Console.Write("MSV: " + listNhanVien[i].maNhanVien);
+                                Console.Write(" hoTen: " + listNhanVien[i].hoTen);
+                                Console.Write(" date: " + listNhanVien[i].ngaySinh);
+                                Console.Write(" sdt: " + listNhanVien[i].sdt);
+                                Console.Write(" diaChi: " + listNhanVien[i].diaChi);
+                                Console.Write(" soNamCongTac: " + soNamCongTac);
+                                Console.WriteLine();
+
                                 Console.WriteLine("Ban co muon luu hay khong?");
-                                Console.WriteLine("Nhap \'YES\' de luu,  \'NO\' de thoat ");
+                                Console.WriteLine("Nhap \'yes\' de luu,  \'no\' de thoat ");
                                 string chon = (Console.ReadLine());
 
                                 if (chon == "yes")
@@ -395,8 +388,8 @@ namespace qlnvbt2
                 // Console.WriteLine(infoConvert);
                 var convertInfo = JsonConvert.SerializeObject(infoConvert);
                 // Console.WriteLine(convertInfo);
-                File.AppendAllText("NhanVien.js", convertInfo);
-                string docFile = File.ReadAllText("NhanVien.js");
+                File.AppendAllText("NhanVien.json", convertInfo);
+                string docFile = File.ReadAllText("NhanVien.json");
                 Console.WriteLine(docFile);
             }
 
@@ -406,14 +399,39 @@ namespace qlnvbt2
         }
         public static void loadFile(List<NhanVien> listNhanVien)
         {
-
-            var kiemtra = File.ReadAllText("NhanVien.js");
+            var kiemtra = File.ReadAllText("NhanVien.json");
             if (kiemtra != "")
             {
                 Console.WriteLine("File dang co du lieu");
-                Console.WriteLine(kiemtra);
-                // listNhanVien.Add(kiemtra);
-                // var convertInfo = JsonConvert.DeserializeObject(info);
+                Console.WriteLine("Da load file");
+
+                /* Console.WriteLine(kiemtra);*/
+                // chuyen doi js sang obj
+                JavaScriptSerializer jss = new JavaScriptSerializer();
+                var obj = jss.Deserialize<dynamic>(kiemtra);
+
+                NhanVien nv = new NhanVien();
+
+                string maNhanVienOBJ = obj["maNhanVien"];
+                string hoTenOBJ = obj["hoTen"];
+                DateTime ngaySinhOBJ = Convert.ToDateTime(obj["ngaySinh"]);
+                string sdtOBJ = obj["sdt"];
+                string diaChiOBJ = obj["diaChi"];
+                int soNamCongTacOBJ = Convert.ToInt32(obj["soNamCongTac"]);
+
+                nv.maNhanVien = maNhanVienOBJ;
+                nv.hoTen = hoTenOBJ;
+                nv.ngaySinh = ngaySinhOBJ;
+                nv.sdt = sdtOBJ;
+                nv.diaChi = diaChiOBJ;
+                nv.soNamCongTac = soNamCongTacOBJ;
+
+                listNhanVien.Add(nv);
+
+                /*var convertInfo = JsonConvert.DeserializeObject(kiemtra);*/
+                /*Console.WriteLine(convertInfo);*/
+
+                /*listNhanVien.Add(convertInfo);*/
 
                 // JsonConvert.DeserializeObject<Movie>(File.ReadAllText(@"c:\movie.json"));
                 // using (StreamReader file = File.OpenText(@"c:\movie.json"))
