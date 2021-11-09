@@ -12,7 +12,7 @@ namespace qlnvbt2
         static void Main(string[] args)
         {
             List<NhanVien> listNhanVien = new List<NhanVien>();
-            loadFile(listNhanVien);
+            // loadFile(listNhanVien);
             menu(listNhanVien);
         }
         public static void hienthiNV(List<NhanVien> listNhanVien)
@@ -29,7 +29,8 @@ namespace qlnvbt2
                 Console.WriteLine();
                 menu(listNhanVien);
             }
-            else {
+            else
+            {
                 Console.WriteLine();
 
                 foreach (NhanVien item in listNhanVien)
@@ -44,7 +45,7 @@ namespace qlnvbt2
                 }
                 Console.WriteLine("===============");
             }
-           
+
         }
         public static void themNV(List<NhanVien> listNhanVien)
         {
@@ -420,7 +421,7 @@ namespace qlnvbt2
                 // Console.WriteLine("Gia tri duoc tim thay tai vi tri:{0}", pos);
                 foreach (var item in listNhanVien)
                 {
-                    if (item.maNhanVien.Contains(timKiemKey) || item.hoTen.Contains(timKiemKey) || item.ngaySinh.Equals(timKiemKey) || item.sdt.Contains(timKiemKey) || item.diaChi.Contains(timKiemKey) || item.soNamCongTac.Equals(timKiemKey))
+                    if (item.maNhanVien.ToLower().ToUpper().Contains(timKiemKey) || item.hoTen.ToLower().ToUpper().Contains(timKiemKey) || item.ngaySinh.Equals(timKiemKey) || item.sdt.ToLower().ToUpper().Contains(timKiemKey) || item.diaChi.ToLower().ToUpper().Contains(timKiemKey) || item.soNamCongTac.Equals(timKiemKey))
                     {
                         Console.WriteLine($"{item.hoTen} - {item.diaChi}");
                     }
@@ -445,19 +446,17 @@ namespace qlnvbt2
             {
                 Console.WriteLine();
                 Console.WriteLine("Ban da lua chon luu file");
-
-                for (int i = 0; i < listNhanVien.Count; i++)
-                {
-                    var convertInfo = JsonConvert.SerializeObject(listNhanVien[i]);
-                    var abc = Convert.ToString(convertInfo);
-                        /*string docFile = File.ReadAllText("NhanVien.json");*/
-                    Console.WriteLine(convertInfo);
-                    File.WriteAllText("NhanVien2.json", abc);
-                }
-
-                Console.WriteLine("===============");
+                var convertInfo = JsonConvert.SerializeObject(listNhanVien);
+                // var abc = Convert.ToString(convertInfo);
+                // string docFile = File.ReadAllText("NhanVien.json");
+                Console.WriteLine(convertInfo);
+                File.WriteAllText("NhanVien.json", convertInfo);
             }
+
+
+            Console.WriteLine("===============");
         }
+
         public static void loadFile(List<NhanVien> listNhanVien)
         {
             var kiemtra = File.ReadAllText("NhanVien.json");

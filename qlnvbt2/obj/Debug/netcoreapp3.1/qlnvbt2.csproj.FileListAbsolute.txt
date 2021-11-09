@@ -45,3 +45,7 @@ C:\Users\thiet\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Microsoft.
 C:\Users\thiet\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
 C:\Users\thiet\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.PlatformAbstractions.dll
 C:\Users\thiet\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Nancy.dll
+C:\Users\Admin\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Admin\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Admin\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.PlatformAbstractions.dll
+C:\Users\Admin\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Nancy.dll
