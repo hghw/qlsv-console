@@ -41,10 +41,6 @@ C:\Users\thiet\Documents\GitHub\qlsv2\qlnvbt2\obj\Debug\netcoreapp3.1\qlnvbt2.cs
 C:\Users\thiet\Documents\GitHub\qlsv2\qlnvbt2\obj\Debug\netcoreapp3.1\qlnvbt2.dll
 C:\Users\thiet\Documents\GitHub\qlsv2\qlnvbt2\obj\Debug\netcoreapp3.1\qlnvbt2.pdb
 C:\Users\thiet\Documents\GitHub\qlsv2\qlnvbt2\obj\Debug\netcoreapp3.1\qlnvbt2.genruntimeconfig.cache
-C:\Users\thiet\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
-C:\Users\thiet\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
-C:\Users\thiet\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.PlatformAbstractions.dll
-C:\Users\thiet\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Nancy.dll
 C:\Users\Admin\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Users\Admin\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
 C:\Users\Admin\Documents\GitHub\qlsv2\qlnvbt2\bin\Debug\netcoreapp3.1\Microsoft.Extensions.PlatformAbstractions.dll

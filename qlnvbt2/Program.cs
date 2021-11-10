@@ -17,24 +17,26 @@ namespace qlnvbt2
         public static void hienthiNV(List<NhanVien> listNhanVien)
         {
             Console.WriteLine("Ban da lua chon hien thi nhan vien");
+            Console.WriteLine("+==================================+");
+
             do
             {
-                Console.WriteLine();
                 foreach (NhanVien item in listNhanVien)
                 {
-                    Console.Write("MSV: " + item.maNhanVien);
-                    Console.Write(" hoTen: " + item.hoTen);
-                    Console.Write(" date: " + item.ngaySinh);
-                    Console.Write(" sdt: " + item.sdt);
-                    Console.Write(" diaChi: " + item.diaChi);
-                    Console.Write(" soNamCongTac: " + item.soNamCongTac);
-                    Console.WriteLine();
+                    Console.WriteLine($" | MSV: {item.maNhanVien}");
+                    Console.WriteLine($" | hoTen: {item.hoTen} ");
+                    Console.WriteLine($" | Date:  {item.ngaySinh.Day}/{item.ngaySinh.Month}/{item.ngaySinh.Year} ");
+                    Console.WriteLine($" | sdt: {item.sdt} ");
+                    Console.WriteLine($" | diaChi: {item.diaChi} ");
+                    Console.WriteLine($" | soNamCongTac: {item.soNamCongTac} ");
+                    Console.WriteLine("  ====================");
                 }
-                Console.WriteLine("===============");
+                
 
                 while (!Console.KeyAvailable)
                 {
-                    Console.WriteLine("Nhan ESC tro ve menu");
+                    Console.WriteLine(" Nhan ESC tro ve menu ");
+                    Console.WriteLine("+======================+");
                     break;
                 }
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
@@ -44,6 +46,7 @@ namespace qlnvbt2
         public static void themNV(List<NhanVien> listNhanVien)
         {
             Console.WriteLine("Ban da lua chon them nhan vien");
+                    Console.WriteLine("+============================+");
     
             Console.WriteLine();
 
@@ -87,13 +90,12 @@ namespace qlnvbt2
                     }
                     catch (FormatException)
                     {
-                        Console.WriteLine("===========================");
-                        Console.WriteLine("|| Sai dinh dang nhap lai||");
-                        Console.WriteLine("===========================");
+                        Console.WriteLine(" Sai dinh dang nhap lai");
+                    Console.WriteLine("+============================+");
 
-                    }
+                }
 
-                } while (true);
+            } while (true);
 
                 Console.WriteLine("Nhap sdt: ");
                 nv.sdt = Console.ReadLine();
@@ -112,60 +114,60 @@ namespace qlnvbt2
                         if (cvsoNamCongTac == "")
                         {
                             Console.WriteLine("Bat buoc nhap so nam cong tac");
-                        }
-                        else
+                        Console.WriteLine("+============================+");
+                    }
+                    else
                         {
                             break;
                         }
-
                     }
-                    catch (System.FormatException)
+                    catch (FormatException)
                     {
                         Console.WriteLine("Ban da nhap sai");
-                    }
-
-                } while (true);
-                // kiem tra ho ten va ngay sinh trung nhau
-                for (int i = 0; i < listNhanVien.Count; i++)
-                {
-                    while (nv.hoTen == listNhanVien[i].hoTen && nv.ngaySinh == listNhanVien[i].ngaySinh)
-                    {
-                    Console.WriteLine("Ten va ngay sinh trung nhau");
-                    Console.WriteLine("===============");
-                    menu(listNhanVien);
-                    break;
-                    }
-
+                    Console.WriteLine("+============================+");
                 }
 
-                //add  vao list
+            } while (true);
 
-                listNhanVien.Add(nv);
+   
 
-                Console.WriteLine("===============");
+            //add  vao list
+            listNhanVien.Add(nv);
+
+            // kiem tra ho ten va ngay sinh trung nhau
+            for (int i = 0; i < listNhanVien.Count -1; i++)
+            {
+                if (nv.hoTen == listNhanVien[i].hoTen && nv.ngaySinh == listNhanVien[i].ngaySinh)
+                {
+                    Console.WriteLine(" Ten va ngay sinh trung nhau");
+                    Console.WriteLine("+============================+");
+                    listNhanVien.RemoveAt(listNhanVien.Count -1);
+                    break;
+                }
+            }
         }
         public static void suaNV(List<NhanVien> listNhanVien)
         {
             Console.WriteLine("Ban da lua chon sua nhan vien");
-
-           
-                Console.WriteLine();
+            Console.WriteLine("+============================+");
 
                 //nhap ma nhan vien can sua
                 Console.WriteLine("Nhap ma nhan vien muon sua");
                 string maNhanVienSua = Console.ReadLine();
-
+            Console.WriteLine("+============================+");
+            if (maNhanVienSua.StartsWith("NV-") && maNhanVienSua.Length == 7 || maNhanVienSua.EndsWith($"{listNhanVien.Count}"))
+            {
                 for (int i = 0; i < listNhanVien.Count; i++)
                 {
                     if (listNhanVien[i].maNhanVien == maNhanVienSua)
                     {
-                        Console.Write("MSV: " + listNhanVien[i].maNhanVien);
-                        Console.Write(" hoTen: " + listNhanVien[i].hoTen);
-                        Console.Write(" date: " + listNhanVien[i].ngaySinh);
-                        Console.Write(" sdt: " + listNhanVien[i].sdt);
-                        Console.Write(" diaChi: " + listNhanVien[i].diaChi);
-                        Console.Write(" soNamCongTac: " + listNhanVien[i].soNamCongTac);
-                        Console.WriteLine();
+                        Console.WriteLine("MSV: " + listNhanVien[i].maNhanVien);
+                        Console.WriteLine("hoTen: " + listNhanVien[i].hoTen);
+                        Console.WriteLine($"Date:  {listNhanVien[i].ngaySinh.Day}/{listNhanVien[i].ngaySinh.Month}/{listNhanVien[i].ngaySinh.Year} ");
+                        Console.WriteLine("sdt: " + listNhanVien[i].sdt);
+                        Console.WriteLine("diaChi: " + listNhanVien[i].diaChi);
+                        Console.WriteLine("soNamCongTac: " + listNhanVien[i].soNamCongTac);
+                        Console.WriteLine("+============================+");
                         //chon thong tin can sua
                         int chonSua;
                         Console.WriteLine("Chon thong tin can sua");
@@ -187,12 +189,14 @@ namespace qlnvbt2
                                 if (key.Key == ConsoleKey.Enter)
                                 {
                                     //hien thi ra nhan vien sua
-                                    Console.Write("MSV: " + listNhanVien[i].maNhanVien);
-                                    Console.Write(" hoTen: " + hoTen);
-                                    Console.Write(" date: " + listNhanVien[i].ngaySinh);
-                                    Console.Write(" sdt: " + listNhanVien[i].sdt);
-                                    Console.Write(" diaChi: " + listNhanVien[i].diaChi);
-                                    Console.Write(" soNamCongTac: " + listNhanVien[i].soNamCongTac);
+                                    Console.WriteLine("MSV: " + listNhanVien[i].maNhanVien);
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("hoTen: " + hoTen);
+                                    Console.ResetColor();
+                                    Console.WriteLine($"Date:  {listNhanVien[i].ngaySinh.Day}/{listNhanVien[i].ngaySinh.Month}/{listNhanVien[i].ngaySinh.Year} ");
+                                    Console.WriteLine("sdt: " + listNhanVien[i].sdt);
+                                    Console.WriteLine("diaChi: " + listNhanVien[i].diaChi);
+                                    Console.WriteLine("soNamCongTac: " + listNhanVien[i].soNamCongTac);
                                     Console.WriteLine();
 
                                     Console.WriteLine("Ban co muon luu hay khong?");
@@ -205,7 +209,7 @@ namespace qlnvbt2
                                     }
                                     else
                                     {
-                                        menu(listNhanVien);
+                                        break;
                                     }
                                 }
                                 break;
@@ -218,12 +222,14 @@ namespace qlnvbt2
                                 {
 
                                     //hien thi ra nhan vien sua
-                                    Console.Write("MSV: " + listNhanVien[i].maNhanVien);
-                                    Console.Write(" hoTen: " + listNhanVien[i].hoTen);
-                                    Console.Write(" date: " + ngaySinh);
-                                    Console.Write(" sdt: " + listNhanVien[i].sdt);
-                                    Console.Write(" diaChi: " + listNhanVien[i].diaChi);
-                                    Console.Write(" soNamCongTac: " + listNhanVien[i].soNamCongTac);
+                                    Console.WriteLine("MSV: " + listNhanVien[i].maNhanVien);
+                                    Console.WriteLine("hoTen: " + listNhanVien[i].hoTen);
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine($"Date:  {ngaySinh.Day}/{ngaySinh.Month}/{ngaySinh.Year} ");
+                                    Console.ResetColor();
+                                    Console.WriteLine("sdt: " + listNhanVien[i].sdt);
+                                    Console.WriteLine("diaChi: " + listNhanVien[i].diaChi);
+                                    Console.WriteLine("soNamCongTac: " + listNhanVien[i].soNamCongTac);
                                     Console.WriteLine();
 
                                     Console.WriteLine("Ban co muon luu hay khong?");
@@ -236,7 +242,7 @@ namespace qlnvbt2
                                     }
                                     else
                                     {
-                                        menu(listNhanVien);
+                                        break;
                                     }
                                 }
                                 break;
@@ -248,12 +254,14 @@ namespace qlnvbt2
                                 if (key.Key == ConsoleKey.Enter)
                                 {
                                     //hien thi ra nhan vien sua
-                                    Console.Write("MSV: " + listNhanVien[i].maNhanVien);
-                                    Console.Write(" hoTen: " + listNhanVien[i].hoTen);
-                                    Console.Write(" date: " + listNhanVien[i].ngaySinh);
-                                    Console.Write(" sdt: " + sdt);
-                                    Console.Write(" diaChi: " + listNhanVien[i].diaChi);
-                                    Console.Write(" soNamCongTac: " + listNhanVien[i].soNamCongTac);
+                                    Console.WriteLine("MSV: " + listNhanVien[i].maNhanVien);
+                                    Console.WriteLine("hoTen: " + listNhanVien[i].hoTen);
+                                    Console.Write($"Date:  {listNhanVien[i].ngaySinh.Day}/{listNhanVien[i].ngaySinh.Month}/{listNhanVien[i].ngaySinh.Year} ");
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("sdt: " + sdt);
+                                    Console.ResetColor();
+                                    Console.WriteLine("diaChi: " + listNhanVien[i].diaChi);
+                                    Console.WriteLine("soNamCongTac: " + listNhanVien[i].soNamCongTac);
                                     Console.WriteLine();
 
                                     Console.WriteLine("Ban co muon luu hay khong?");
@@ -266,7 +274,7 @@ namespace qlnvbt2
                                     }
                                     else
                                     {
-                                        menu(listNhanVien);
+                                        break;
                                     }
                                 }
                                 break;
@@ -278,12 +286,14 @@ namespace qlnvbt2
                                 if (key.Key == ConsoleKey.Enter)
                                 {
                                     //hien thi ra nhan vien sua
-                                    Console.Write("MSV: " + listNhanVien[i].maNhanVien);
-                                    Console.Write(" hoTen: " + listNhanVien[i].hoTen);
-                                    Console.Write(" date: " + listNhanVien[i].ngaySinh);
-                                    Console.Write(" sdt: " + listNhanVien[i].sdt);
-                                    Console.Write(" diaChi: " + diaChi);
-                                    Console.Write(" soNamCongTac: " + listNhanVien[i].soNamCongTac);
+                                    Console.WriteLine("MSV: " + listNhanVien[i].maNhanVien);
+                                    Console.WriteLine("hoTen: " + listNhanVien[i].hoTen);
+                                    Console.WriteLine($"Date:  {listNhanVien[i].ngaySinh.Day}/{listNhanVien[i].ngaySinh.Month}/{listNhanVien[i].ngaySinh.Year} ");
+                                    Console.WriteLine("sdt: " + listNhanVien[i].sdt);
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("diaChi: " + diaChi);
+                                    Console.ResetColor();
+                                    Console.WriteLine("soNamCongTac: " + listNhanVien[i].soNamCongTac);
                                     Console.WriteLine();
 
                                     Console.WriteLine("Ban co muon luu hay khong?");
@@ -296,7 +306,7 @@ namespace qlnvbt2
                                     }
                                     else
                                     {
-                                        menu(listNhanVien);
+                                        break;
                                     }
                                 }
                                 break;
@@ -308,12 +318,14 @@ namespace qlnvbt2
                                 if (key.Key == ConsoleKey.Enter)
                                 {
                                     //hien thi ra nhan vien sua
-                                    Console.Write("MSV: " + listNhanVien[i].maNhanVien);
-                                    Console.Write(" hoTen: " + listNhanVien[i].hoTen);
-                                    Console.Write(" date: " + listNhanVien[i].ngaySinh);
-                                    Console.Write(" sdt: " + listNhanVien[i].sdt);
-                                    Console.Write(" diaChi: " + listNhanVien[i].diaChi);
-                                    Console.Write(" soNamCongTac: " + soNamCongTac);
+                                    Console.WriteLine("MSV: " + listNhanVien[i].maNhanVien);
+                                    Console.WriteLine("hoTen: " + listNhanVien[i].hoTen);
+                                    Console.WriteLine($"Date:  {listNhanVien[i].ngaySinh.Day}/{listNhanVien[i].ngaySinh.Month}/{listNhanVien[i].ngaySinh.Year} ");
+                                    Console.WriteLine("sdt: " + listNhanVien[i].sdt);
+                                    Console.WriteLine("diaChi: " + listNhanVien[i].diaChi);
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("soNamCongTac: " + soNamCongTac);
+                                    Console.ResetColor();
                                     Console.WriteLine();
 
                                     Console.WriteLine("Ban co muon luu hay khong?");
@@ -326,7 +338,7 @@ namespace qlnvbt2
                                     }
                                     else
                                     {
-                                        menu(listNhanVien);
+                                        break;
                                     }
                                 }
                                 break;
@@ -338,15 +350,22 @@ namespace qlnvbt2
                         }
                     }
                 }
-                Console.WriteLine("===============");
             }
-        
+            else
+            {
+                Console.WriteLine("Ban da nhap sai ma nhan vien");
+            }
+            Console.WriteLine("+============================+");
+        }
+
         public static void xoaNV(List<NhanVien> listNhanVien)
         {
             Console.WriteLine("Ban da lua chon xoa nhan vien");
                 Console.WriteLine();
                 Console.WriteLine("Nhap ma nhan vien muon xoa: ");
                 string maNhanVien = Console.ReadLine();
+            if (maNhanVien.StartsWith("NV-") && maNhanVien.Length == 7 || maNhanVien.EndsWith($"{listNhanVien.Count}"))
+            {
                 for (int i = 0; i < listNhanVien.Count; i++)
                 {
                     if (listNhanVien[i].maNhanVien == maNhanVien)
@@ -357,25 +376,30 @@ namespace qlnvbt2
                         if (xoaNhanVien == "yes")
                         {
                             listNhanVien.RemoveAt(i);
+                            Console.WriteLine("Da xoa thanh cong");
                         }
                         else if (xoaNhanVien == "no")
                         {
-                            menu(listNhanVien);
+                            break;
                         }
                         else
                         {
                             Console.WriteLine("Ban da nhap sai");
                         }
+                    }
 
-                    }
-                    else
-                    {
-                        Console.WriteLine("Khong ton tai nhan vien nay");
-                    }
                 }
-                Console.WriteLine("===============");
             }
-        
+            else
+            {
+                Console.WriteLine("Ban da nhap sai ma nhan vien");
+            }
+
+
+
+            Console.WriteLine("+============================+");
+        }
+
         public static void timKiem(List<NhanVien> listNhanVien)
         {
                 Console.WriteLine();
@@ -384,10 +408,8 @@ namespace qlnvbt2
                 Console.WriteLine("Nhap tu khoa muon tim kiem");
                 string timKiemKey = Console.ReadLine();
 
-            // string pos = SequencePosition(listNhanVien, timKiemKey);
-            // Console.WriteLine("Gia tri duoc tim thay tai vi tri:{0}", pos);
             Console.WriteLine("Ket qua tim kiem!");
-            Console.WriteLine("=========================");
+            Console.WriteLine("+============================+");
 
             foreach (var item in listNhanVien)
                 {
@@ -404,9 +426,9 @@ namespace qlnvbt2
                         Console.WriteLine($"hoTen: {item.hoTen} - diaChi: {item.diaChi}");
                     }
                 }
-                Console.WriteLine("=========================");
-            }
-        
+            Console.WriteLine("+============================+");
+        }
+
 
         public static void luuFile(List<NhanVien> listNhanVien)
         {
@@ -415,10 +437,10 @@ namespace qlnvbt2
                 Console.WriteLine("Ban da lua chon luu file");
                 var convertInfo = JsonConvert.SerializeObject(listNhanVien);
                 File.WriteAllText("NhanVien.json", convertInfo);
-            
 
 
-            Console.WriteLine("===============");
+
+            Console.WriteLine("+============================+");
         }
 
         public static void loadFile(List<NhanVien> listNhanVien)
@@ -439,13 +461,15 @@ namespace qlnvbt2
             int check;
             do
             {
-                Console.WriteLine("1. Hien thi DS nguoi dung");
-                Console.WriteLine("2. Them moi nhan vien");
-                Console.WriteLine("3. Sua nhan vien");
-                Console.WriteLine("4. Xoa nhan vien");
-                Console.WriteLine("5. Tim kiem nhan vien");
-                Console.WriteLine("6. Luu ra file JSON");
-                Console.WriteLine("7. Thoat!");
+                Console.WriteLine("+===================MENU==============+");
+                Console.WriteLine("|  1. Hien thi DS nguoi dung          |");
+                Console.WriteLine("|  2. Them moi nhan vien              |");
+                Console.WriteLine("|  3. Sua nhan vien                   |");
+                Console.WriteLine("|  4. Xoa nhan vien                   |");
+                Console.WriteLine("|  5. Tim kiem nhan vien              |");
+                Console.WriteLine("|  6. Luu ra file JSON                |");
+                Console.WriteLine("|  7. Thoat!                          |");
+                Console.WriteLine("+=====================================+");
                 check = int.Parse(Console.ReadLine());
                 switch (check)
                 {
